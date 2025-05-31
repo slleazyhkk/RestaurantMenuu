@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +9,7 @@ namespace Model.Core
 {
     public interface IMenu
     {
-        string Name { get; set; }
+        string MenuType();
         List<Dish> Dishes { get; set; }
 
         void AddDish(Dish dish);
@@ -17,3 +17,4 @@ namespace Model.Core
         void ClearMenu();
     }
 }
+
