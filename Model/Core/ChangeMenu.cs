@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,18 +7,14 @@ using Model.Core.Dishes;
 
 namespace Model.Core
 {
-    public partial class ChangeMenu : IMenu
+    public partial class ChangeMenu:IMenu
     {
-        public string Name { get; set; }
+        public virtual string MenuType() => "Постоянное меню";
         public List<Dish> Dishes { get; set; }
-        public ChangeMenu(string name)
-        {
-            Name = name;
-            Dishes = new List<Dish>();
-        }
+        
         public void AddDish(Dish dish)
         {
-            Dishes.Add(dish);
+            if (dish != null && !Dishes.Contains(dish))  Dishes.Add(dish);
         }
 
         public void ClearMenu()
@@ -28,7 +24,7 @@ namespace Model.Core
 
         public void RemoveDish(Dish dish)
         {
-            Dishes.Remove(dish);
+            if (dish != null && Dishes.Contains(dish)) Dishes.Remove(dish);
         }
     }
 }
